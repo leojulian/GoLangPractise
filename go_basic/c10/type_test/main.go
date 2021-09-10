@@ -36,7 +36,6 @@ func main() {
 	var testInterface interface{} = 1
 	switch v := testInterface.(type) {
 	case int:
-	default:
 		fmt.Println(v)
 	}
 }
