@@ -31,4 +31,11 @@ func main() {
 	// 5, 定义函数
 	var e myFunc
 	fmt.Printf("%T\n", e)
+
+	// 6, 查询interface类型
+	var testInterface interface{} = 1
+	switch v := testInterface.(type) {
+	case int:
+		fmt.Println(v)
+	}
 }
