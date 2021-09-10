@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GoLang/grpc_test/proto"
+	"Example/grpc_test/proto"
 	"context"
 	"fmt"
 
