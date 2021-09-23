@@ -52,7 +52,9 @@ func main() {
 
 	//2, slice from array
 	array1 := [5]int{1, 2, 3, 4, 5}
-	slice2 := array1[1:4]
+	slice2 := array1[:4]
+	//delete index:2 value:3
+	slice2 = append(slice2[0:2], slice2[3:]...)
 	fmt.Printf("length is %d capacity is %d \n", len(slice2), cap(slice2))
 
 	//3,
