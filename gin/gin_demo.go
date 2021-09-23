@@ -1,8 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/gin-gonic/gin"
 )
@@ -127,7 +131,7 @@ func main() {
 		Age  int8
 	}
 
-	r.LoadHTMLGlob("gin/templates/*")
+	r.LoadHTMLGlob("templates/*")
 	stu1 := &student{Name: "leo", Age: 30}
 	stu2 := &student{Name: "Michael", Age: 4}
 	r.GET("/arr", func(c *gin.Context) {
@@ -166,5 +170,13 @@ func main() {
 	//	authorized.POST("/submit", submitEndpoint)
 	//}
 
-	r.Run()
+	go func() {
+		_ = r.Run()
+	}()
+	quit := make(chan os.Signal)
+	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
+	<-quit
+
+	//Deal with some tasks when receive ctl+c
+	fmt.Println("Server is closing...")
 }
