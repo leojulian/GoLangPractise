@@ -8,6 +8,15 @@ import (
 
 var wg sync.WaitGroup
 
+func test() {
+	c := make(chan int, 5)
+	c <- 5
+	c <- 6
+	close(c)
+	//c <- 7 //will panic here when try to send msg to a closed signal
+	fmt.Println(<-c) //but still can fetch from the closed channel
+}
+
 func consumer(queue chan int) {
 	defer wg.Done()
 	for {
