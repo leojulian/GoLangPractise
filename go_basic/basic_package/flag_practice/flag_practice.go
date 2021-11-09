@@ -6,23 +6,23 @@ import (
 )
 
 var (
-	para1 string
-	para2 string
+	name  string
+	title string
 )
 
 //usage:
-//go run flag_practise.go -para1=123 -para2=456
-//go run flag_practise.go -h
+//go run flag_practice.go -name=leo -title=UFT-RnD
+//go run flag_practice.go -h
 func main() {
-	flag.StringVar(&para1, "para1", "test1", "help information")
-	flag.StringVar(&para2, "para2", "test2", "help information")
+	flag.StringVar(&name, "name", "leo", "help information")
+	flag.StringVar(&title, "title", "UFT-RnD", "help information")
 	flag.Parse()
 
-	if para1 != "" {
-		fmt.Println(para1)
+	if name != "" {
+		fmt.Println(name)
 	}
 
-	if para2 != "" {
-		fmt.Println(para2)
+	if title != "" {
+		fmt.Println(title)
 	}
 }
